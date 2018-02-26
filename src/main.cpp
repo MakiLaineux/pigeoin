@@ -830,11 +830,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 1 * COIN;
 
-    if(nHeight > 2880) // no block reward after 6 days x 480 blocks
+    if(nHeight > 28800) // JCMOD no block reward after 60 days x 480 blocks
         nSubsidy = 0;
 
-    if(nHeight == 1) // first block reward = 60 to get the total emission to 1000
-        nSubsidy = 60;
 
     return nSubsidy + nFees;
 }
@@ -1987,7 +1985,7 @@ bool LoadBlockIndex(bool fAllowNew)
         pchMessageStart[1] = 0xc0;
         pchMessageStart[2] = 0xb8;
         pchMessageStart[3] = 0xdb;
-        hashGenesisBlock = uint256("0x083426318a391c6b371f6e2ca3a6e4788675f32cd761c74f6d7ae7bb71d91d2d");
+        hashGenesisBlock = uint256("0x083426318a391c6b371f6e2ca3a6e4788675f32cd761c74f6d7ae7bb71d91d2d"); // JCMOD
     }
 
     //
@@ -2019,7 +2017,7 @@ bool LoadBlockIndex(bool fAllowNew)
 	// vMerkleTree: 5a2e19825b
         
         // Genesis block
-        const char* pszTimestamp = "todo: replace with pigeon specific to assure no pre mining";
+        const char* pszTimestamp = "todo: replace with pigeon specific to assure no pre mining";//JCMOD
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2033,7 +2031,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = 1519291655;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 387122668;
+        block.nNonce   = 387122668;//JCMOD
 
         if (fTestNet)
         {
@@ -2048,7 +2046,7 @@ bool LoadBlockIndex(bool fAllowNew)
         assert(block.hashMerkleRoot == uint256("0x945cb43e5e7e3de276759d9326ff08a1daeb9ac49b0a09ad88195f03935a692c"));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)
+        if (true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
