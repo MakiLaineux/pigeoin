@@ -40,7 +40,7 @@ static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const int64 MIN_TX_FEE = 10000000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64 MAX_MONEY = 10000 * COIN; // JCMOD maximum of 10000 coins
+static const int64 MAX_MONEY = 28800 * COIN; // JCMOD maximum of 28800 coins
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 static const int COINBASE_MATURITY = 10;
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -547,11 +547,18 @@ public:
     {
         // Large (in bytes) low-priority (new, small-coin) transactions
         // need a fee.
-        return dPriority > COIN * 480 / 250; // JCMOD 480 blocks found a day. Priority cutoff is 1 PGN day / 250 bytes.
+
+	// JC : always allow free transactions
+	return true;
+        //return dPriority > COIN * 480 / 250; // JCMOD 480 blocks found a day. Priority cutoff is 1 PGN day / 250 bytes.
     }
 
     int64 GetMinFee(unsigned int nBlockSize=1, bool fAllowFree=true, enum GetMinFee_mode mode=GMF_BLOCK) const
     {
+	// JC : no min fee
+	if (true) return 0;
+
+
         // Base fee is either MIN_TX_FEE or MIN_RELAY_TX_FEE
         int64 nBaseFee = (mode == GMF_RELAY) ? MIN_RELAY_TX_FEE : MIN_TX_FEE;
 

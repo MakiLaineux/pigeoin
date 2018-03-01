@@ -1,0 +1,24 @@
+Flush(false) db not started
+StopNode()
+Flushed 0 addresses to peers.dat  50ms
+Flush(true) db not started
+Pigeoin exited
+
+Flush(false) db not started
+StopNode()
+Flushed 0 addresses to peers.dat  43ms
+Flush(true) db not started
+Pigeoin exited
+
+Flush(false) db not started
+StopNode()
+Flushed 0 addresses to peers.dat  59ms
+Flush(true) db not started
+Pigeoin exited
+
+Flush(false) db not started
+StopNode()
+Flushed 0 addresses to peers.dat  41ms
+Flush(true) db not started
+Pigeoin exited
+

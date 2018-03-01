@@ -337,7 +337,7 @@ bool AppInit2()
     // Keep irc seeding on by default for now.
 //    if (fTestNet)
 //    {
-        SoftSetBoolArg("-irc", true);
+//        SoftSetBoolArg("-irc", true);
 //    }
 
     if (mapArgs.count("-bind")) {
